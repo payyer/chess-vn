@@ -2,10 +2,10 @@ import { FaUser } from "react-icons/fa";
 import styles from "./AuthForm.module.scss";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import InputFiled from "../../../../components/InputFiled/InputFiled";
-import Button from "../../../../components/Button/Button";
 import { Link } from "react-router";
-import CheckBox from "../../../../components/CheckBox/CheckBox";
+import InputFiled from "../../../../components/InputFiled";
+import Button from "../../../../components/Button";
+import CheckBox from "../../../../components/CheckBox";
 type Inputs = {
   email: string;
   password: string;

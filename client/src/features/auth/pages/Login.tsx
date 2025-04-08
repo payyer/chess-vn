@@ -1,8 +1,8 @@
 import styles from "./Login.module.scss";
 import logo from "../../../assets/imgs/logo.png";
 import AuthForm from "../components/AuthForm/AuthForm";
-import Divider from "../../../components/Divider/Divider";
-import BtnLoginGoogle from "../../../components/BtnLoginGoogle/BtnLoginGoogle";
+import Divider from "../../../components/Divider";
+import BtnLoginGoogle from "../../../components/BtnLoginGoogle";
 import { Link } from "react-router";
 export default function Login() {
   return (
