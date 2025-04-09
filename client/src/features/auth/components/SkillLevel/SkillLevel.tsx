@@ -14,7 +14,7 @@ export default function SkillLevel() {
   const elo = useAccountStore((state) => state.elo);
   const navigation = useNavigate();
   const nextStep = () => {
-    navigation({ pathname: "register", search: "?step=skill-level" });
+    navigation({ pathname: "/register", search: "?step=login-info" });
   };
   return (
     <div className={styles.wrapper}>

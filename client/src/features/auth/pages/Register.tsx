@@ -5,6 +5,7 @@ import MainScreen from "../components/MainScreen/MainScreen";
 import SubTitle from "../components/SubTitle/SubTitle";
 import SkillLevel from "../components/SkillLevel/SkillLevel";
 import { IoArrowBack } from "react-icons/io5";
+import RegisterForm from "../components/RegisterForm/RegisterForm";
 
 enum RegisterStep {
   MAIN_SCREEN = "main-screen",
@@ -48,6 +49,19 @@ export default function Register() {
             subTitle="A starting point for match pairings"
           />
           <SkillLevel />
+          <Link to={"/register"} className={styles.backLink}>
+            <IoArrowBack className={styles.backBtn} />
+          </Link>
+        </>
+      ) : null}
+
+      {step === RegisterStep.LOGIN_INFO ? (
+        <>
+          <SubTitle
+            title="Enter your email and a password"
+            subTitle="This allows you to log in on any device"
+          />
+          <RegisterForm />
           <Link to={"/register"} className={styles.backLink}>
             <IoArrowBack className={styles.backBtn} />
           </Link>

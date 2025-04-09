@@ -1,4 +1,8 @@
 export interface RegisterSlice  {
     elo: number,
-    selectElo : (elo :RegisterSlice['elo']) => void
+    email: string,
+    password: string,
+    name: string,
+    selectElo : (elo :RegisterSlice['elo']) => void,
+    setEmailPassword: (data: Partial<RegisterSlice>) => void;
 }

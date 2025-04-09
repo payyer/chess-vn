@@ -3,5 +3,9 @@ import { RegisterSlice } from "./types"
 
 export const createRegisterSlice : StateCreator<RegisterSlice,[],[], RegisterSlice> = (set) => ({
     elo: 400,
-    selectElo: (elo) => set(() => ({ elo  }))
+    email: "",
+    password: "",
+    name: "",
+    selectElo: (elo) => set(() => ({ elo  })),
+    setEmailPassword: (data) => set(() => ({ email: data.email, password: data.password} ))
 })
