@@ -1,0 +1,16 @@
+.formWrapper {
+  margin: 16px auto 0;
+  width: 100%;
+  max-width: 460px;
+  height: fit-content;
+  padding: 15px 15px 0 15px;
+  border-radius: 12px;
+}
+
+.divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  span {
+    background-color: #302e2b;
+  }
+}

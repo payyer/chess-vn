@@ -6,16 +6,18 @@ import BtnLoginGoogle from "../../../components/BtnLoginGoogle";
 import { Link } from "react-router";
 export default function Login() {
   return (
-    <div className={styles.container}>
-      <img className={styles.logo} src={logo} alt="ChessVN.com" />
+    <main className={styles.container}>
+      <h1>
+        <img className={styles.logo} src={logo} alt="ChessVN.com" />
+      </h1>
       <div className={styles.formWrapper}>
         <AuthForm />
-        <Divider text="OR" className={styles.marginTop} />
+        <Divider text="OR" className={styles.divider} />
         <BtnLoginGoogle />
-        <Link className={styles.navRegister} to={"register"}>
+        <Link className={styles.navRegister} to={"/register"}>
           New? Sign Up and start playing chess!
         </Link>
       </div>
-    </div>
+    </main>
   );
 }

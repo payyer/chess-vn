@@ -1,11 +1,17 @@
+import styles from "./CheckBox.module.scss";
 export default function CheckBox() {
   return (
     <label
       style={{ fontSize: "14px", color: "#b1b0af" }}
       htmlFor="rememberMe"
-      className="form-control"
+      className={styles.checkBoxForm}
     >
-      <input type="checkbox" defaultChecked id="rememberMe" />
+      <input
+        className={styles.customCheckBox}
+        type="checkbox"
+        defaultChecked
+        id="rememberMe"
+      />
       Remember me
     </label>
   );
