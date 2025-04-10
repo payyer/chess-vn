@@ -6,6 +6,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import clsx from "clsx";
 import Button from "../../../../components/Button";
 import useAccountStore from "../../../../store/auth";
+import { useNavigate } from "react-router";
 
 type Inputs = {
   email: string;
@@ -14,10 +15,21 @@ type Inputs = {
 
 export default function RegisterForm() {
   const methods = useForm<Inputs>();
+  const { setError } = methods;
+  const navigation = useNavigate();
 
   const setEmailPassword = useAccountStore((state) => state.setEmailPassword);
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // check email is exists
+    if (data.email == "quocanhle112@gmail.com") {
+      setError("email", {
+        type: "manual",
+        message: "Email already exists",
+      });
+      return;
+    }
     setEmailPassword({ email: data.email, password: data.password });
+    navigation({ pathname: "/register", search: "?step=username" });
   };
   return (
     <div className={styles.wrapper}>
