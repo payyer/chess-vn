@@ -6,6 +6,7 @@ import SkillLevel from "../components/SkillLevel/SkillLevel";
 import UserName from "../components/UserName/UserName";
 import LoginInfo from "../components/LoginInfo/LoginInfo";
 import Completed from "../components/Completed/Completed";
+import { Step } from "../../../store/auth/types";
 
 enum RegisterStep {
   MAIN_SCREEN = "main-screen",
@@ -14,13 +15,6 @@ enum RegisterStep {
   USERNAME = "username",
   COMPLETED = "completed",
 }
-
-type Step =
-  | "main-screen"
-  | "skill-level"
-  | "login-info"
-  | "username"
-  | "completed";
 
 const validSteps: Step[] = [
   "main-screen",
@@ -35,6 +29,7 @@ export default function Register() {
   const stepParam: string | null = searchParams.get("step");
   const step = stepParam === null ? RegisterStep.MAIN_SCREEN : stepParam;
   const isValidStep: boolean = validSteps.includes(step as Step);
+
   if (!isValidStep) return <div>404 NotFound</div>;
 
   return (

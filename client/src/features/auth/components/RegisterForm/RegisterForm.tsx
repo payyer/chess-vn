@@ -17,6 +17,7 @@ export default function RegisterForm() {
   const methods = useForm<Inputs>();
   const { setError } = methods;
   const navigation = useNavigate();
+  const setStep = useAccountStore((state) => state.setStep);
 
   const setEmailPassword = useAccountStore((state) => state.setEmailPassword);
   const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -29,6 +30,7 @@ export default function RegisterForm() {
       return;
     }
     setEmailPassword({ email: data.email, password: data.password });
+    setStep("username");
     navigation({ pathname: "/register", search: "?step=username" });
   };
   return (

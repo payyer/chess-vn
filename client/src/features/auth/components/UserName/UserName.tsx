@@ -8,6 +8,7 @@ import useAccountStore from "../../../../store/auth";
 import SubTitle from "../SubTitle/SubTitle";
 import { Link, useNavigate } from "react-router";
 import { IoArrowBack } from "react-icons/io5";
+import { useEffect } from "react";
 
 type Inputs = {
   username: string;
@@ -17,7 +18,10 @@ export default function UserName() {
   const methods = useForm<Inputs>();
   const { setError } = methods;
   const setName = useAccountStore((state) => state.setName);
-  const navigate = useNavigate();
+  const step = useAccountStore((state) => state.step);
+  const setStep = useAccountStore((state) => state.setStep);
+  const resetFiled = useAccountStore((state) => state.resetFiled);
+  const navigation = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     // Check username already exists
@@ -29,8 +33,17 @@ export default function UserName() {
       return;
     }
     setName(data.username);
-    navigate({ pathname: "/register", search: "?step=completed" });
+    setStep("completed");
+    navigation({ pathname: "/register", search: "?step=completed" });
   };
+
+  useEffect(() => {
+    if (step != "username") {
+      navigation("/register");
+      setStep("main-screen");
+      resetFiled();
+    }
+  }, []);
 
   return (
     <>
