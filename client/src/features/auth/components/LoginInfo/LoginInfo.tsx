@@ -27,6 +27,9 @@ export default function LoginInfo() {
       />
       <RegisterForm />
       <Link
+        onClick={() => {
+          setStep("skill-level");
+        }}
         to={{ pathname: "/register", search: "?step=skill-level" }}
         className={styles.backLink}
       >
