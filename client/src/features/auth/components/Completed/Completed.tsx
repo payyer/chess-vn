@@ -11,7 +11,7 @@ export default function Completed() {
   const resetFiled = useAccountStore((state) => state.resetFiled);
   const navigation = useNavigate();
   useEffect(() => {
-    if (step != "login-info") {
+    if (step != "completed") {
       navigation("/register");
       setStep("main-screen");
     }

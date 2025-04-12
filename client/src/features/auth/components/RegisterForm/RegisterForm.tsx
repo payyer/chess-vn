@@ -29,8 +29,8 @@ export default function RegisterForm() {
       });
       return;
     }
-    setEmailPassword({ email: data.email, password: data.password });
     setStep("username");
+    setEmailPassword({ email: data.email, password: data.password });
     navigation({ pathname: "/register", search: "?step=username" });
   };
   return (
