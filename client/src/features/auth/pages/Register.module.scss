@@ -12,26 +12,3 @@
   width: 148px;
   height: auto;
 }
-
-.btnLogin {
-  position: absolute;
-  top: 20px;
-  right: 16px;
-  color: white;
-  font-size: 2rem;
-  font-weight: 500;
-  &:hover {
-    opacity: 0.7;
-    transition: all 0.2s ease-in-out;
-  }
-}
-
-.backLink {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-.backBtn {
-  font-size: 3rem;
-  color: #c5c5c4;
-}
