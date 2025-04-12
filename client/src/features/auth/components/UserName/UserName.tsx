@@ -69,6 +69,9 @@ export default function UserName() {
         </FormProvider>
       </div>
       <Link
+        onClick={() => {
+          setStep("login-info");
+        }}
         to={{ pathname: "/register", search: "?step=login-info" }}
         className={styles.backLink}
       >
