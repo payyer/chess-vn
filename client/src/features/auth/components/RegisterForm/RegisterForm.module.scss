@@ -1,0 +1,21 @@
+.wrapper {
+  max-width: 460px;
+  width: 100%;
+  margin: 32px auto 0;
+}
+
+.input {
+  margin-top: 16px;
+  input {
+    height: 48px;
+    padding-left: 40px;
+  }
+  div {
+    top: 12px;
+    left: 10px;
+  }
+}
+.submit {
+  height: 64px;
+  margin-top: 16px;
+}

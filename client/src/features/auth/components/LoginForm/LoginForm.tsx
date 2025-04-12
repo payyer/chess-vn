@@ -1,5 +1,5 @@
 import { FaUser } from "react-icons/fa";
-import styles from "./AuthForm.module.scss";
+import styles from "./LoginForm.module.scss";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { Link } from "react-router";
@@ -12,7 +12,7 @@ type Inputs = {
   rememberMe: boolean;
 };
 
-export default function AuthForm() {
+export default function LoginForm() {
   const methods = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
