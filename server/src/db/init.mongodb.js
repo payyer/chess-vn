@@ -2,8 +2,9 @@
 
 const mongoose = require("mongoose");
 const { countConnect } = require("../helpers/check.connect");
+const config = require("../configs/config.mongodb");
 
-const connectString = process.env.CONNECT_STRING_MONGODB;
+const connectString = config.db.url;
 
 // Apply Singleton partern to connect MongoDB
 class Database {
@@ -14,6 +15,9 @@ class Database {
   connect(type = "mongodb") {
     mongoose.set("debug", true);
     mongoose.set("debug", { color: true });
+    if (!config.db.url) {
+      throw new Error("❌ MongoDB URL is missing. Check your .env file.");
+    }
 
     mongoose
       .connect(connectString, { maxPoolSize: 50 })
