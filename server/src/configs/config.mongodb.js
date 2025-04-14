@@ -1,18 +1,18 @@
 const dev = {
   app: {
-    port: 3000,
+    port: process.env.DEV_PORT || 3000,
   },
   db: {
-    url: process.env.CONNECT_STRING_MONGODB_DEV,
+    url: process.env.DEV_MONGODB_CONNECT,
   },
 };
 
 const product = {
   app: {
-    port: 3000,
+    port: process.env.PRODUCT_PORT || 5000,
   },
   db: {
-    url: process.env.CONNECT_STRING_MONGODB_PRODUCTION,
+    url: process.env.PRODUCT_MONGODB_CONNECT,
   },
 };
 
