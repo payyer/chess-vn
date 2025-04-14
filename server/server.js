@@ -1,5 +1,6 @@
 const app = require("./src/app");
-const PORT = 3000;
+const config = require("./src/configs/config.mongodb");
+const PORT = config.app.port;
 
 const server = app.listen(PORT, () => {
   console.log(`WSV chess start with port: ${PORT} `);
