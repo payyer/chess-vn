@@ -14,6 +14,12 @@ const app = express();
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression()); // compress respone reduce size
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 // init database
 db.getinstance();
@@ -23,7 +29,7 @@ checkOverLoad();
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 // init routes
-app.use("", router);
+app.use("/", router);
 
 // handling error
 
