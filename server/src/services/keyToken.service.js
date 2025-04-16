@@ -1,24 +1,23 @@
 "use strict";
 
-const keytokenModel = require("../models/keytoken.model");
+const keyStoreModel = require("../models/keyStore.model");
 
-class KeyTokenService {
-  static createToken = async ({ userId, publicKey }) => {
+class KeyStoreService {
+  static createKeyStore = async ({ userId, encryptSecretKey, iv }) => {
     try {
-      // Becasue publicKey current type is Buffer when create keyPair with crypto
-      // Convert to string => PEM String to easy save in database
-      const publicKeyString = publicKey.toString();
-
-      const tokens = await keytokenModel.create({
-        user: userId,
-        publicKey: publicKeyString,
+      const newKeyStore = await keyStoreModel.create({
+        userId,
+        encryptSecretKey,
+        iv,
       });
-
-      return tokens ? tokens.publicKey : null;
+      return newKeyStore ? newKeyStore : null;
     } catch (error) {
+      console.log({ error });
       return error;
     }
+
+    console.log({ newKeyStore });
   };
 }
 
-module.exports = KeyTokenService;
+module.exports = KeyStoreService;

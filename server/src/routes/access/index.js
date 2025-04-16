@@ -8,7 +8,7 @@ const router = express.Router();
  * @swagger
  * /v1/api/user/signup:
  *   post:
- *     summary: Tạo người dùng mới
+ *     summary: Create User
  *     tags: [Users]
  *     requestBody:
  *       required: true

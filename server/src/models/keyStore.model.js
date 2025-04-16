@@ -3,24 +3,28 @@
 const mongoose = require("mongoose"); // Erase if already required
 
 // Declare the Schema of the Mongo model
-var keyTokenSchema = new mongoose.Schema(
+var keyStoreSchema = new mongoose.Schema(
   {
-    user: {
+    userId: {
       type: mongoose.Types.ObjectId,
       required: true,
       ref: "User",
     },
-    publicKey: {
+    encryptSecretKey: {
       type: String,
       required: true,
+    },
+    iv: {
+      type: String,
+      require: true,
     },
     refreshToken: [],
   },
   {
-    collection: "KeyToken",
+    collection: "KeyStore",
     timestamps: true,
   }
 );
 
 //Export the model
-module.exports = mongoose.model("KeyToken", keyTokenSchema);
+module.exports = mongoose.model("KeyStore", keyStoreSchema);

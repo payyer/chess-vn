@@ -1,6 +1,6 @@
 "use strict";
 
-const _ = require("lodash/pick");
+const _ = require("lodash");
 
 const getInfoData = ({ fileds = [], object = {} }) => {
   return _.pick(object, fileds);
