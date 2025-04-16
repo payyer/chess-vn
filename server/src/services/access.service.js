@@ -4,6 +4,8 @@ const userModel = require("../models/user.model");
 const crypto = require("crypto");
 const KeyTokenService = require("./keyToken.service");
 const { createtokenPair } = require("../auth/authUtils");
+const bcrypt = require("bcrypt");
+const { getInfoData } = require("../utils");
 
 class AccessService {
   static signUp = async ({ name, email, password, elo }) => {
@@ -18,7 +20,14 @@ class AccessService {
         };
       }
 
-      const newUser = await userModel.create({ name, email, password, elo });
+      const hashPassword = bcrypt.hashSync(password, 10);
+
+      const newUser = await userModel.create({
+        name,
+        email,
+        password: hashPassword,
+        elo,
+      });
 
       if (newUser) {
         // step 02: create privateKey, publicKey with algorithms RSA
@@ -57,7 +66,10 @@ class AccessService {
         return {
           code: 201,
           metadata: {
-            user: newUser,
+            user: getInfoData({
+              fileds: ["_id", "name", "email", "role"],
+              object: newUser,
+            }),
             tokens,
           },
         };
