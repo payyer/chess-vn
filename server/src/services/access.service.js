@@ -40,7 +40,7 @@ class AccessService {
     }
 
     // step 05: Create Key Store to save Encrypt secretKey and RefreshToken
-    newKeyStore = await KeyStoreService.createKeyStore({
+    await KeyStoreService.createKeyStore({
       userId: user._id,
       encryptSecretKey: encryptedKey,
       iv,
