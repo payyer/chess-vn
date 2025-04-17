@@ -1,20 +1,19 @@
 "use strict";
 const JWT = require("jsonwebtoken");
 const crypto = require("node:crypto");
+const { InternalServerResponseError } = require("../utils/errorResponse");
 
 const createtokenPair = async (payload, secrectKey) => {
-  try {
-    const accessToken = JWT.sign(payload, secrectKey, {
-      expiresIn: "2 days",
-    });
-    const refreshToken = JWT.sign(payload, secrectKey, {
-      expiresIn: "7 days",
-    });
-
-    return { accessToken, refreshToken };
-  } catch (error) {
-    console.log(error);
+  const accessToken = JWT.sign(payload, secrectKey, {
+    expiresIn: "2 days",
+  });
+  const refreshToken = JWT.sign(payload, secrectKey, {
+    expiresIn: "7 days",
+  });
+  if (!accessToken || !refreshToken) {
+    throw new InternalServerResponseError("Create Token Pair Failed!");
   }
+  return { accessToken, refreshToken };
 };
 
 const encryptSecretKey = (secretKey) => {

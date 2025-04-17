@@ -1,13 +1,23 @@
 "use strict";
 
 const AccessService = require("../services/access.service");
-const { CreateSuccessResponse } = require("../utils/successResponse");
+const {
+  CreateSuccessResponse,
+  SuccessResponse,
+} = require("../utils/successResponse");
 
 class AccessController {
   signUp = async (req, res) => {
     new CreateSuccessResponse({
       message: "Sign up user success",
       metadata: await AccessService.signUp(req.body),
+    }).send(res);
+  };
+
+  login = async (req, res) => {
+    new SuccessResponse({
+      message: "Login Success",
+      metadata: await AccessService.login(req.body),
     }).send(res);
   };
 }
