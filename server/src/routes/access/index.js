@@ -42,4 +42,34 @@ const router = express.Router();
  */
 router.post("/user/signup", asyncHandler(accessController.signUp));
 
+/**
+ * @swagger
+ * /v1/api/user/login:
+ *   post:
+ *     summary: Login
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: quocanh@gmail.com
+ *               password:
+ *                 type: string
+ *                 example: 123456
+ *     responses:
+ *       200:
+ *         description: Login Success
+ *       401:
+ *         description: Invalid email or password
+ */
+router.post("/user/login", asyncHandler(accessController.login));
+
 module.exports = router;

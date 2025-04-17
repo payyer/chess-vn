@@ -18,7 +18,11 @@ var keyStoreSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    refreshToken: [],
+    refreshToken: {
+      type: String,
+      require: true,
+    },
+    refreshTokensUsed: [],
   },
   {
     collection: "KeyStore",
