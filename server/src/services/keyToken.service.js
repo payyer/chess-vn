@@ -12,11 +12,8 @@ class KeyStoreService {
       });
       return newKeyStore ? newKeyStore : null;
     } catch (error) {
-      console.log({ error });
       return error;
     }
-
-    console.log({ newKeyStore });
   };
 }
 

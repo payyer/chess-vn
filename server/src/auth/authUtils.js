@@ -29,7 +29,6 @@ const encryptSecretKey = (secretKey) => {
 };
 
 const decryptSecretKey = (encryptedKey, iv) => {
-  console.log(iv);
   const masterKey = Buffer.from(process.env.MASTER_KEY, "hex");
   const ivBuffer = Buffer.from(iv, "hex");
   const decipher = crypto.createDecipheriv("aes-256-cbc", masterKey, ivBuffer);

@@ -2,6 +2,7 @@
 
 const express = require("express");
 const accessController = require("../../controllers/access.controller");
+const { asyncHandler } = require("../../utils");
 const router = express.Router();
 
 /**
@@ -39,6 +40,6 @@ const router = express.Router();
  *       400:
  *         description: Dữ liệu không hợp lệ
  */
-router.post("/user/signup", accessController.signUp);
+router.post("/user/signup", asyncHandler(accessController.signUp));
 
 module.exports = router;
