@@ -2,6 +2,7 @@
 const JWT = require("jsonwebtoken");
 const crypto = require("node:crypto");
 const { InternalServerResponseError } = require("../utils/errorResponse");
+const { asyncHandler } = require("../utils");
 
 const createtokenPair = async (payload, secrectKey) => {
   const accessToken = JWT.sign(payload, secrectKey, {
@@ -37,8 +38,13 @@ const decryptSecretKey = (encryptedKey, iv) => {
   return decryptedKey;
 };
 
+const authentication = asyncHandler((req, res, next) => {
+  return next();
+});
+
 module.exports = {
   createtokenPair,
   encryptSecretKey,
   decryptSecretKey,
+  authentication,
 };

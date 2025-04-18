@@ -3,6 +3,7 @@
 const express = require("express");
 const accessController = require("../../controllers/access.controller");
 const { asyncHandler } = require("../../utils");
+const { authentication } = require("../../auth/authUtils");
 const router = express.Router();
 
 /**
@@ -71,5 +72,23 @@ router.post("/user/signup", asyncHandler(accessController.signUp));
  *         description: Invalid email or password
  */
 router.post("/user/login", asyncHandler(accessController.login));
+
+// router.use(authentication);
+
+/**
+ * @swagger
+ * /v1/api/user/logout:
+ *   delete:
+ *     summary: Logout
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Lougout success
+ */
+router.delete("/user/logout", (req, res) => {
+  return res.status(200).json({
+    headers: req.headers,
+  });
+});
 
 module.exports = router;
