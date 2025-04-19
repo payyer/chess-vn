@@ -73,22 +73,20 @@ router.post("/user/signup", asyncHandler(accessController.signUp));
  */
 router.post("/user/login", asyncHandler(accessController.login));
 
-// router.use(authentication);
-
+router.use(authentication);
 /**
  * @swagger
  * /v1/api/user/logout:
  *   delete:
  *     summary: Logout
  *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *         clientId: []
  *     responses:
  *       200:
  *         description: Lougout success
  */
-router.delete("/user/logout", (req, res) => {
-  return res.status(200).json({
-    headers: req.headers,
-  });
-});
+router.delete("/user/logout", asyncHandler(accessController.logout));
 
 module.exports = router;
