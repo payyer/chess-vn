@@ -20,11 +20,19 @@ const options = {
           scheme: "bearer",
           bearerFormat: "JWT",
         },
+        clientId: {
+          type: "apiKey",
+          in: "header",
+          name: "x-client-id",
+        },
       },
     },
     security: [
       {
         bearerAuth: [],
+      },
+      {
+        clientId: [],
       },
     ],
   },

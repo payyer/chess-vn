@@ -42,6 +42,13 @@ class KeyStoreService {
     }
     return keyStore;
   };
+
+  static deleteKeyStoreById = async ({ _id }) => {
+    const keyStore = await keyStoreModel
+      .findOneAndDelete({ _id }, { new: true })
+      .lean();
+    return keyStore;
+  };
 }
 
 module.exports = KeyStoreService;

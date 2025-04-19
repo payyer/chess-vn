@@ -101,6 +101,15 @@ class AccessService {
       tokens,
     };
   };
+
+  static logout = async (keyStore) => {
+    const keyStoreDelete = await KeyStoreService.deleteKeyStoreById({
+      _id: keyStore._id,
+    });
+    return {
+      keyStore: getInfoData({ fileds: ["_id"], object: keyStoreDelete }),
+    };
+  };
 }
 
 module.exports = AccessService;
